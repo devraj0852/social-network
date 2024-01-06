@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Friend Request</title>
+</head>
+<body>
+    <h1>Send Friend Request</h1>
+    
+    <form id="friendRequestForm">
+        <label for="senderId">Sender ID:</label>
+        <input type="text" id="senderId" name="sender_id" required>
+        
+        <label for="receiverId">Receiver ID:</label>
+        <input type="text" id="receiverId" name="receiver_id" required>
+        
+        <button type="button" onclick="sendFriendRequest()">Send Friend Request</button>
+    </form>
+
+    <script>
+        function sendFriendRequest() {
+            var formData = {
+                sender_id: document.getElementById('senderId').value,
+                receiver_id: document.getElementById('receiverId').value
+            };
+
+            fetch('http://localhost:7000/send-friend-request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Handle the response as needed
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

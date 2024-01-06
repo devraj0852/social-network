@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "e5b59f40-e2a9-4fb9-b441-dced77c6b444",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"Aida.Bartell@yahoo.com\",\n    \"password\": \"nYd9N46FDSM7iw2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sender_id\": \"65967badd91c9b774885bd81\",\n    \"receiver_id\": \"65966d10f84d2a02aa6daa0a\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/send-friend-request",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"send-friend-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_id\": \"65967cce309ab37ef89a0a73\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/accept-friend-request",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"accept-friend-request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All My Friends",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/get-friends/65967badd91c9b774885bd81",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"get-friends",
+						"65967badd91c9b774885bd81"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/get-friends/65969fbf00d2ec5b7216a421",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"get-friends",
+						"65969fbf00d2ec5b7216a421"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get frient request list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/get-friends/65969fbf00d2ec5b7216a421",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"get-friends",
+						"65969fbf00d2ec5b7216a421"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomFirstName}}\",\n    \"mobile\": \"{{$randomPhoneNumber}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"address\": \"{{$randomStreetAddress}}\"\n}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/user-register",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"user-register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

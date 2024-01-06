@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+</head>
+<style>
+    .userListItem {
+        margin-bottom: 20px;
+    }
+
+    .userName {
+        display: block;
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+    <a href="/getFriendRequestList"><button>Show friend request List</button></a>
+    <a href="/getFriendList"><button>Show my friend</button></a>
+    <h1>User List</h1>
+    <ul id="userList">
+    </ul>
+
+    <script>
+        const userId = localStorage.getItem('userId');
+        if(!userId){
+            window.location.href = '/login';
+        }
+
+        fetch(`http://localhost:7000/all-users/${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                const users = data.users;
+
+                const userList = document.getElementById('userList');
+
+                users.forEach(user => {
+
+                    const listItem = document.createElement('li');
+                    listItem.classList.add('userListItem');
+                    listItem.innerHTML = `
+                        <div class="userName">
+                            <strong>Name:</strong> ${user.first_name} ${user.last_name}
+                        </div>
+                        <button data-user='${user._id}' class="request-send">Send Friend Request</button>
+                    `;
+                    
+                    var d = new Promise((res,rej)=>{
+                        res(userList.appendChild(listItem));
+                    });
+
+                    d.then(()=>{
+                        setFn();
+                    })
+                    
+                });
+
+            })
+            .catch(error => console.error('Error fetching user data:', error));
+
+            function setFn(){
+                document.querySelectorAll(".request-send").forEach((e,i)=>{
+                    e.onclick = function (e){
+                        e.preventDefault();
+                        var user_id = this.getAttribute('data-user');
+                        
+                        var formData = {
+                            sender_id: userId,
+                            receiver_id: user_id
+                        };
+                        console.log(user_id, userId)
+
+            fetch('http://localhost:7000/send-friend-request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                alert(data.message)
+                // alert('Friend request sent Successfully')
+            })
+            .catch(error => console.error('Error:', error));
+                }
+            })
+           }
+
+    </script>
+
+</body>
+</html>

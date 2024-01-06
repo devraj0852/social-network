@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Friend List</title>
+</head>
+<body>
+    <h1>Friend List</h1>
+    
+    <div id="friendList"></div>
+
+    <script>
+        const userId = localStorage.getItem('userId');
+        function getFriendList() {
+            fetch(`http://localhost:7000/get-friends/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                displayFriendList(data.friends);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function displayFriendList(friendList) {
+
+            var friendListDiv = document.getElementById('friendList');
+            friendListDiv.innerHTML = "<h2>Your Friends:</h2>";
+
+            if (friendList.length > 0) {
+                var ul = document.createElement('ul');
+                friendList.forEach(function(friend) {
+                    var li = document.createElement('li');
+                    li.textContent = friend.first_name + ' ' + friend.last_name;
+                    ul.appendChild(li);
+                });
+                friendListDiv.appendChild(ul);
+            } else {
+                friendListDiv.innerHTML += "<p>No friends yet.</p>";
+            }
+        }
+        window.onload = getFriendList;
+    </script>
+    <a href="/dashboard"><button>Home</button></a>
+</body>
+</html>
