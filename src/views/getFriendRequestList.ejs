@@ -22,11 +22,12 @@
 
     <script>
         const userId = localStorage.getItem('userId');
+        const baseUrl = window.location.origin;
         if(!userId){
             window.location.href = '/login';
         }
 
-        fetch(`http://localhost:7000/get-friend-request/${userId}`)
+        fetch(`${baseUrl}/get-friend-request/${userId}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -60,6 +61,7 @@
             .catch(error => console.error('Error fetching user data:', error));
 
             function setFn(){
+                // var baseUrl = window.location.origin;
                 document.querySelectorAll(".request-send").forEach((e,i)=>{
                     e.onclick = function (e){
                         e.preventDefault();
@@ -70,7 +72,7 @@
                         };
                         console.log(user_id, userId)
 
-            fetch('http://localhost:7000/accept-friend-request', {
+            fetch(`${baseUrl}/accept-friend-request`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

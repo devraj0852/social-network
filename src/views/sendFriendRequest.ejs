@@ -21,12 +21,13 @@
 
     <script>
         function sendFriendRequest() {
+            var baseUrl = window.location.origin;
             var formData = {
                 sender_id: document.getElementById('senderId').value,
                 receiver_id: document.getElementById('receiverId').value
             };
 
-            fetch('http://localhost:7000/send-friend-request', {
+            fetch(`${baseUrl}/send-friend-request`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

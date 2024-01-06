@@ -23,12 +23,13 @@
 
     <script>
         function submitLoginForm() {
+            var baseUrl = window.location.origin;
             var formData = {
                 email: document.getElementById('email').value,
                 password: document.getElementById('password').value
             };
 
-            fetch('http://localhost:7000/login', {
+            fetch(`${baseUrl}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

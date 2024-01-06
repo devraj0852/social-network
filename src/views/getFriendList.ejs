@@ -14,7 +14,8 @@
     <script>
         const userId = localStorage.getItem('userId');
         function getFriendList() {
-            fetch(`http://localhost:7000/get-friends/${userId}`, {
+            const baseUrl = window.location.origin;
+            fetch(`${baseUrl}/get-friends/${userId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

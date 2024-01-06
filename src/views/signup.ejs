@@ -34,6 +34,8 @@
     <a href="/login"><button type="button">Login</button></a>
     <script>
         function submitForm() {
+            var baseUrl = window.location.origin;
+
             var formData = {
                 first_name: document.getElementById('firstName').value,
                 last_name: document.getElementById('lastName').value,
@@ -43,7 +45,7 @@
                 address: document.getElementById('address').value
             };
 
-            fetch('http://localhost:7000/user-register', {
+            fetch(`${baseUrl}/user-register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -52,7 +54,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data); // Handle the response as needed
+                console.log(data);
                 alert('Registered Successfully')
                 window.location.href = '/login';
             })
