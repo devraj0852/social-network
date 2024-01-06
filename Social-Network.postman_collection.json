@@ -1,8 +1,10 @@
 {
 	"info": {
-		"_postman_id": "e5b59f40-e2a9-4fb9-b441-dced77c6b444",
-		"name": "New Collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "f6f75b03-50ee-4a62-9166-ce16b3656558",
+		"name": "Social-Network",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21772017",
+		"_collection_link": "https://dark-eclipse-32676.postman.co/workspace/My-Workspace~f1ce7aa4-3c7e-4e9e-8b47-faed73d9b3df/collection/21772017-f6f75b03-50ee-4a62-9166-ce16b3656558?action=share&source=collection_link&creator=21772017"
 	},
 	"item": [
 		{
@@ -20,11 +22,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:7000/login",
+					"raw": "localhost:3000/login",
 					"host": [
 						"localhost"
 					],
-					"port": "7000",
+					"port": "3000",
 					"path": [
 						"login"
 					]
@@ -47,11 +49,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:7000/send-friend-request",
+					"raw": "localhost:3000/send-friend-request",
 					"host": [
 						"localhost"
 					],
-					"port": "7000",
+					"port": "3000",
 					"path": [
 						"send-friend-request"
 					]
@@ -66,7 +68,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"request_id\": \"65967cce309ab37ef89a0a73\"\n}",
+					"raw": "{\n    \"request_id\": \"65986a93c32613456e6e8ac9\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,11 +76,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:7000/accept-friend-request",
+					"raw": "localhost:3000/accept-friend-request",
 					"host": [
 						"localhost"
 					],
-					"port": "7000",
+					"port": "3000",
 					"path": [
 						"accept-friend-request"
 					]
@@ -104,14 +106,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:7000/get-friends/65967badd91c9b774885bd81",
+					"raw": "localhost:3000/get-friends/65985c0655400151d6a0cefd",
 					"host": [
 						"localhost"
 					],
-					"port": "7000",
+					"port": "3000",
 					"path": [
 						"get-friends",
-						"65967badd91c9b774885bd81"
+						"65985c0655400151d6a0cefd"
 					]
 				}
 			},
@@ -135,14 +137,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:7000/get-friends/65969fbf00d2ec5b7216a421",
+					"raw": "localhost:3000/get-user/6596fc5c62d7724a33d67721",
 					"host": [
 						"localhost"
 					],
-					"port": "7000",
+					"port": "3000",
 					"path": [
-						"get-friends",
-						"65969fbf00d2ec5b7216a421"
+						"get-user",
+						"6596fc5c62d7724a33d67721"
 					]
 				}
 			},
@@ -166,14 +168,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:7000/get-friends/65969fbf00d2ec5b7216a421",
+					"raw": "localhost:3000/get-friend-request/65985c0655400151d6a0cefd",
 					"host": [
 						"localhost"
 					],
-					"port": "7000",
+					"port": "3000",
 					"path": [
-						"get-friends",
-						"65969fbf00d2ec5b7216a421"
+						"get-friend-request",
+						"65985c0655400151d6a0cefd"
 					]
 				}
 			},
@@ -186,7 +188,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomFirstName}}\",\n    \"mobile\": \"{{$randomPhoneNumber}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"address\": \"{{$randomStreetAddress}}\"\n}\n}",
+					"raw": "{\n    \"first_name\": \"{{$randomFirstName}}\",\n    \"last_name\": \"{{$randomFirstName}}\",\n    \"mobile\": 950431733,\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"address\": \"{{$randomStreetAddress}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -194,11 +196,11 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:7000/user-register",
+					"raw": "localhost:3000/user-register",
 					"host": [
 						"localhost"
 					],
-					"port": "7000",
+					"port": "3000",
 					"path": [
 						"user-register"
 					]
