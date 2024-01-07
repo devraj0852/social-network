@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
+
 <body>
     <h1>Login</h1>
-    
+
     <form id="loginForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        
+        <div class="main">
+            <div class="formgroup">
+                <label class="label" for="email">Email:</label>
+                <input class="input_box" type="email" id="email" name="email" required>
+            </div>
+
+            <div class="formgroup">
+                <label class="label" for="password">Password:</label>
+                <input class="input_box" type="password" id="password" name="password" required>
+            </div>
+        </div>
+
         <button type="button" onclick="submitLoginForm()">Login</button>
     </form>
     <br>
@@ -29,7 +37,7 @@
                 password: document.getElementById('password').value
             };
             console.log(formData);
-            if(formData.email !== "" && formData.password !== ""){
+            if (formData.email !== "" && formData.password !== "") {
                 fetch(`${baseUrl}/login`, {
                     method: 'POST',
                     headers: {
@@ -37,19 +45,20 @@
                     },
                     body: JSON.stringify(formData)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    alert(data.message)
-                    localStorage.setItem('userId', data.user._id);
-                    window.location.href = '/dashboard/';
-                    // window.location.href = '/dashboard/'+data.user._id;
-                })
-                .catch(error => console.error('Error:', error));
-            }else{
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        alert(data.message)
+                        localStorage.setItem('userId', data.user._id);
+                        window.location.href = '/dashboard/';
+                        // window.location.href = '/dashboard/'+data.user._id;
+                    })
+                    .catch(error => console.error('Error:', error));
+            } else {
                 alert('field is required')
             }
         }
     </script>
 </body>
+
 </html>

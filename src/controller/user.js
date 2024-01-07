@@ -173,7 +173,16 @@ const getAllUsers = async (req, res) => {
     try {
         const authenticatedUserId = req.params.id;
 
-        const users = await User.find({ _id: { $ne: authenticatedUserId } });
+        const user = await User.findById({ _id: authenticatedUserId });
+        const ids = []
+        for(let i = 0; i < user.friends.length; i++) {
+            ids.push(user.friends[i]._id);
+        }
+        
+        // const users = await User.find({ _id: { $ne: authenticatedUserId } });
+        const users = await User.find({
+            _id: { $nin: ids }
+          });
 
         res.status(200).json({ users, message: 'Fetched successfully' });
     } catch (error) {
