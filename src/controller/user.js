@@ -178,6 +178,7 @@ const getAllUsers = async (req, res) => {
         for(let i = 0; i < user.friends.length; i++) {
             ids.push(user.friends[i]._id);
         }
+        ids.push(authenticatedUserId)
         
         // const users = await User.find({ _id: { $ne: authenticatedUserId } });
         const users = await User.find({
